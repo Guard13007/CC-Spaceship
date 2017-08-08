@@ -1,0 +1,19 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   D A M A G E   C T R L     |
+|                               |
+|                               |
+|                               |
+|                               |-
+|                               |-
+|                               |
+|                               |
+|                               |
+|                               |
++ - - - - - - - - - - - - - - - +
+
+= in top left allows selecting a different console (is blue-colored)
+ DAMAGE CTRL text is cyan color
+
+should be able to seal off and vent sections of the ship (fire!)
+direct where repair teams go, and first-aid staff

@@ -1,0 +1,29 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   N A V I G A T I O N       |
+|                               |
+|   #                           |
+|         .                     |
+|                               |-
+|               +               |-
+|                               |
+|                           ^   |  pan and zoom buttons, zoom indicator, and
+| 2 0 x                   < I > |  info button for when something has been selected
+| + -                       v   |
++ - - - - - - - - - - - - - - - +
+
++ - - - - - - - + - - - - - - - +
+| =   N A V .   S E C   A - # # |  when a sector is selected,
+|   n a m e                     |  displays info at top right
+|       o                       |
+|                   0           |  n a m e - where info about a selected target
+|           %                   |-  will be displayed
+|               +             @ |-
+|   O                           |  haven't decided symbol meaning yet, also
+|         x                 ^   |  info when displayed might need a whole other
+| 2 0 x                   < I > |  screen..although that's not really nav's job
+| + -             *         v   |  so probably no
++ - - - - - - - - - - - - - - - +
+
+= in top left allows selecting a different console (is blue-colored)
+ NAVIGATION / NAV. text is cyan color

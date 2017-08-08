@@ -1,0 +1,29 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   O P S       F R Q   3 9 2 |  000 to 999 or scn
+| 3                   3   E M R |  TODO copy power level stuff from engineering,
+| 2                   2   B C N |   only these values are the center of the scaling
+| 1                   1   S C N |   (so the center of green zone, yellow, red)
+| 0 F A W I S P T C R 0   M S G |-
+|   ^                   _ _ _ _ |- top right, emergency, beacon, scan, message (incoming hail/status)
+| <   >                   1 2 3 |
+|   v           +       F 4 5 6 |  select frequency
+| 2 0 x                 R 7 8 9 |  send report
+| + -                   H . 0 + |  hail
++ - - - - - - - - - - - - - - - +
+
+all-in-one page!
+ops: internals (power management), comms management, sensors
+
++ - - - - - - - + - - - - - - - +
+| =   O P S   S C N   C O M   # |  scan (sensors), com (comms), # (power)
+|                               |  design a page for each, this is scan (unfinished)
+|                               |
+|                               |
+|                               |-
+|               +               |-
+|                               |
+|                           ^   |
+| 2 0 x                   <   > |
+| + -                       v   |
++ - - - - - - - - - - - - - - - +

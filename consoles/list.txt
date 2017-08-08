@@ -1,0 +1,26 @@
+## 23rd Century
+
+- Helm
+- Navigation (also handles weapons firing)
+- Comms
+- Library Computer Access
+- Engineering
+- x Damage Control
+- Environmental Engineering
+
+## Late-23rd to Early-24th Century
+
+- x Propulsion Systems
+
+## 24th Century
+
+- Conn
+- Ops
+- Engineering
+- x Damage Control
+- x Environmental Control (simplified version of ENV ENG.)
+- x Stellar Cartography
+- x Astrometrics
+- Library Computer Access
+- x Emergency Manual Override
+  (basically, direct computer access)

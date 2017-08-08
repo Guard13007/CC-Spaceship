@@ -1,0 +1,30 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   C O M M S   F R Q   9 2 8 |  0 to 999 or scn
+| c                             |
+| c                             |
+| c                             |
+| c                             |-
+|                       _ _ _ _ |-  blank entries on keypad are dark gray
+|                         1 2 3 |  entry keypad, select (numbers are light gray)
+| E M R .   S T A T .   F 4 5 6 |  frequency (purple)
+| B C N .   H A I L .   A 7 8 9 |  allied ship by identifier (green)
+| S C N                 S . 0 + |  other ship by identifier (white)
++ - - - - - - - - - - - - - - - +  then type value and enter (+ green) (. is cancel, red)
+
+note: all keypad modes actually work the same, ship IDs are frequencies for contacting those ships
+
+The "c" lines represent where received chatter will go
+of form ###: text (where ### is identifier, color-coded)
+When in scan mode: FRQ:###: text (frequency is white)
+
+= in top left allows selecting a different console (is blue-colored)
+ COMMS text is cyan color, as is FRQ
+SCN is button for activating scan mode, which goes through frequencies constantly (light gray)
+
+BCN activates a beacon  (in green)
+EMR sends distress call (in red)
+STAT sends automatic status report (orange)
+HAIL ..hails another ship (blue)
+ (all flash if call received, and period next to them will turn into star to select them)
+ (flash is bg and fg colors swapping)

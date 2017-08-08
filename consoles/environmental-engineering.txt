@@ -1,0 +1,112 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   E N V   E N G I N E E R . |  when things are too far out of alignment, red (or other alarm color)
+| P R E S S U R E     1 4 . 7 p |   standard pressure is 14.7 psi
+| T E M P .           2 1 . 0 C |   standard temperature is 21 C
+| H U M I D I T Y     3 7 . 0 % |   standard humidity is 37 %
+| G R A V I T Y         1 . 0 G |-  standard gravity is 1 G
+| w 2                   _ _ _ _ |- here can be either a warning or another mixture %
+| O X Y   2 0 %           1 2 3 |  standard oxygen fraction is 20%
+| N I T   8 0 %           4 5 6 |  standard nitrogen fraction is 80%
+| C 0 2 . 0 2 %           7 8 9 |  CO2 should never be above 0.5%,
+| w w w   0 0 %           . 0 + |   graph will change to regular if goes above 0.8%
++ - - - - - - - - - - - - - - - +   considered unsafe 3%, lethal in 30 minutes at 10%
+
+w w w is where warnings of additional contaminates go, in red
+
++ - - - - - - - + - - - - - - - +  this one, the idea was to have
+| =   E N V   E N G I N E E R . |  overviews of pressure, temperature,
+| P R S   n o m i n a l         |  humidity, gravity, air mixture, recycling,
+| T M P   n o m                 |  lighting, power levels to environmental sys,
+| H M D   n o m                 |  and which environmental system was active
+| G R V   n o m                 |- (aka, primary/secondary/auxiliary)
+| A I R   n o r m       _ _ _ _ |-
+| C Y C   n o m           1 2 3 |
+| L G T   n o m           4 5 6 |
+| P O W                   7 8 9 |
+| S Y S                   . 0 + |
++ - - - - - - - - - - - - - - - +
+
++ - - - - - - - + - - - - - - - +  the idea here is to have color and letter
+| =   E N V   E N G I N E E R . |  coded indicators for every section of the
+|         1   2   3   4   5   6 |  ship and subsystem within that section of
+| P R S                         |  the ship
+| T M P                         |
+| H M D                         |- select a section (PRS/TMP/etc) or a sub-section,
+| G R V                 _ _ _ _ |- and then enter new values on keypad?
+| A I R                   1 2 3 |
+| C Y C                   4 5 6 |
+| L G T                   7 8 9 |
+| S Y S                   . 0 + |
++ - - - - - - - - - - - - - - - +
+
++ - - - - - - - + - - - - - - - +  the idea here is to have color and letter
+| =   E N V   E N G I N E E R . |  coded indicators for every section of the
+|         0 1 2 3 4 5 6 7 8 9 x |  ship and subsystem within that section of
+| P R S                         |  the ship
+| T M P                         |
+| H M D                         |- more section numbers than the above variant,
+| G R V                         |- and 'x' for an overall indication
+| A I R                         |
+| C Y C                         |
+| L G T                         |
+| S Y S                         |
++ - - - - - - - - - - - - - - - +
+
++ - - - - - - - + - - - - - - - +  the idea here is to have color and letter
+| =   E N V   E N G I N E E R . |  coded indicators for categories of the
+|         B   1   2   E   N   S |  ship and subsystem within each
+| P R S                         |
+| T M P                         |
+| H M D                         |- select a section (PRS/TMP/etc) or a sub-section,
+| G R V                 _ _ _ _ |- and then V to view values, E to enter them, T to
+| A I R                   1 2 3 |  toggle a system on/off
+| C Y C                 V 4 5 6 |
+| L G T                 E 7 8 9 |
+| S Y S                 T . 0 + |
++ - - - - - - - - - - - - - - - +
+
+B = bridge, 1 = primary hull, 2 = secondary hull, E = engineering, N = nacelles, S = subsystems
+
++ - - - - - - - + - - - - - - - +  the idea here is to have color and letter
+| =   E N V   E N G I N E E R . |  coded indicators for categories of the
+|         B   E   S   1   2   Q |  ship and subsystem within each
+| P R S                         |
+| T M P                         |
+| H M D                         |- select a section (PRS/TMP/etc) or a sub-section,
+| G R V                 _ _ _ _ |- and then V to view values, E to enter them, T to
+| A I R                   1 2 3 |  toggle a system on/off
+| C Y C                 V 4 5 6 |
+| L G T                 E 7 8 9 |  I like this version best so far
+| S Y S                 T . 0 + |
++ - - - - - - - - - - - - - - - +
+
+B = bridge, E = engineering, S = sickbay, 1 = primary hull, 2 = secondary hull, Q = crew quarters
+TODO: rearrange the order of symbols because some are blocked by the keypad itself
+
+= in top left allows selecting a different console (is blue-colored)
+ ENV ENGINEER. text is cyan color
+
+color codes:
+black bg, no fg     -> system does not exist
+red bg              -> system destroyed
+otherwise, black bg
+white fg            -> system is not damaged
+green fg            -> system is damaged but operational
+orange fg           -> system is damaged, relying on auxiliary system
+red fg              -> system does not have auxiliary or auxiliary is also inoperable
+
+symbols:
+*   system is operating at normal settings
+-   system is operating normally, at a below normal setting
++   system is operating normally, at a higher than normal setting
+.   system requires more power to function properly
+o   system is overloaded and taking damage from too much power supplied to it
+
+carbon extraction, water recycle, waste recycle, active cooling
+external mixture, filtration, water pumps, coolant circulation, radiators, heat exchange, emergency vacuum
+lighting, chemical release, primary, secondary, tertiary
+weather simulation, deck by deck / section by section controls
+
+39.1 C and 42.0 % humidity is Borg conditions
+32.0 C is Cardassian temp.

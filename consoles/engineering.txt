@@ -1,0 +1,27 @@
+15x10
++ - - - - - - - + - - - - - - - +
+| =   E N G I N E E R I N G     |
+| 8                   8         |  left numbers: 0-2 red, 3-5 yellow, 6-8 green
+| 7                   7         |  right numbers: 0-1 orange, 2-4 green, 5-6 yellow, 7-8 red
+| 6                   6         |
+| 5     #             5         |- plenty of space on the right for 3-letter warnings/alerts!
+| 4   # #   #       # 4         |-
+| 3 # # #   #     # # 3         |
+| 2 # # # # # #   # # 2         |
+| 1 # # # # # # # # # 1         |
+| 0 F A W I S P T C R 0         |
++ - - - - - - - - - - - - - - - +
+
+F = foreward shields, A = aft shields, W = warp drive / navigational deflector,
+I = impulse engines / thrusters, S = sensors, P = phasers, T = photon/quantum
+torpedoes, C = comms, R = reactor
+TODO: may reorganize placement, so some systems are more to the right, as the
+ right indicator colors are for those systems + reactor, left are for the
+ remaining ones
+
+= in top left allows selecting a different console (is blue-colored)
+ ENGINEERING text is cyan color
+
+bg -> normal power is yellow, not enough power is red, more than needed is green
+bg, for reactor -> green is normal operating range, red is overwhelmed, yellow is
+ nearing overwhelmed, orange is below minimum

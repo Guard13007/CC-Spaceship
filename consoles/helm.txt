@@ -1,0 +1,26 @@
+TODO needs weapons firing capability as well!
+
+15x10
++ - - - - - - - + - - - - - - - +
+| =   H E L M     H D G   3 6 0 |  0 to 360 degrees
+|                 S P D   i 5 0 |  i/w for impulse/warp (i green, w orange)
+|                               |  digits are % of impulse or warp #
+|                               |  (ex 3 2 is warp 3.2)
+|                               |-
+|           *           _ _ _ _ |-  blank entries on keypad are dark gray
+|                         1 2 3 |  entry keypad, select (numbers are light gray)
+|                       H 4 5 6 |  heading (lightBlue)
+| 2 x                   I 7 8 9 |  impulse (green)
+| + -                   W . 0 + |  or warp (orange)
++ - - - - - - - - - - - - - - - +  then type value and enter (+ green) (. is cancel, red)
+
+* in center is our ship,
+bg color represents movement capability (when there is bg color, fg is dark gray)
+ red: thrusters only
+ orange: impulse and thrusters only
+ green: warp-capable
+ black: no engine damage
++ - in bottom left are zoom controls, (in light gray)
+right above it is current zoom (from 1x to 9x) (1-3 in white, 4-6 in light gray, 7-9 are red)
+= in top left allows selecting a different console (is blue-colored)
+ HELM text is cyan color, as are HDG and SPD
