@@ -92,12 +92,14 @@ function lib_access:touch(side, x, y)
     end
     self:drawEntry(monitor)
   elseif event == "left" then
-    if self.entry and index > 1 then
+    if self.entry and self.entry.index > 1 then
       self:loadEntry(self.entry.index - 1)
+      self:drawEntry(monitor)
     end
   elseif event == "right" then
-    if self.entry and index < #lib_access.library then
+    if self.entry and self.entry.index < #lib_access.library then
       self:loadEntry(self.entry.index + 1)
+      self:drawEntry(monitor)
     end
   elseif event == "up" then
     if self.entry and self.entry.lineNumber > 1 then
@@ -120,13 +122,3 @@ end
 setmetatable(lib_access, {__call = lib_access.new})
 
 return lib_access
-
---[[
-+ - - - - - - - + - - - - - - - +
-| =   L I B   A C C E S S       |
-|   t                           |  t: title of entry (dark gray bg)
-| e                             |  e lines: entry text (white text)
-| e                             |
-| e                             |-
-| `   1 2 3 4 5 6 7 8 9 0 - = < |- begin keyboard
-]]

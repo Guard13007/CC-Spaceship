@@ -94,15 +94,31 @@ function keyboard:drawKeyboard(monitor)
   end
 
   monitor.setTextColor(colors.white)
-  -- TODO indicate when capslock and shift are pressed by inverting their colors
-  monitor.setCursorPos(1, 8)  -- capslock
-  monitor.write("^")
-  monitor.setCursorPos(1, 9)  -- left shift
-  monitor.write("S")
   monitor.setCursorPos(15, 6) -- backspace
   monitor.write("<")
   monitor.setCursorPos(15, 8) -- enter
   monitor.write(">")
+
+  -- TODO indicate when capslock and shift are pressed by inverting their colors
+  if self.caps then
+    monitor.setBackgroundColor(colors.white)
+    monitor.setTextColor(colors.gray)
+  -- else
+  --   monitor.setBackgroundColor(colors.gray)
+  --   monitor.setTextColor(colors.white)
+  end
+  monitor.setCursorPos(1, 8)  -- capslock
+  monitor.write("^")
+
+  if self.shift then
+    monitor.setBackgroundColor(colors.white)
+    monitor.setTextColor(colors.gray)
+  else
+    monitor.setBackgroundColor(colors.gray)
+    monitor.setTextColor(colors.white)
+  end
+  monitor.setCursorPos(1, 9)  -- left shift
+  monitor.write("S")
   monitor.setCursorPos(15, 9) -- right shift
   monitor.write("S")
 
@@ -131,11 +147,13 @@ function keyboard:touch(monitor, x, y)
   elseif x == 1 and y == 7 then              -- T (tab)
     self.input = self.input .. "  "
     self:drawInput(monitor)
+    return -- prevent adding a T below
   elseif x == 13 and y == 9 then
     -- NOTE # (symbols) does nothing for now
   elseif x > 5 and x < 11 and y == 10 then   -- spacebar
     self.input = self.input .. " "
     self:drawInput(monitor)
+    return -- prevent adding the characters making up the keyboard
   elseif self.scrollKeys and y == 10 then
     if x == 2 then
       return "left"
