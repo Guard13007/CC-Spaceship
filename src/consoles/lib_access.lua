@@ -75,7 +75,9 @@ function lib_access:touch(side, x, y)
         break
       end
     end
-    if not self.entry then
+    if self.entry then
+      self.keyboard.input = ""
+    else
       -- no entry found
       self.entry = {
         title = "Not Found",
