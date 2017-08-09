@@ -1,3 +1,9 @@
+-- | `   1 2 3 4 5 6 7 8 9 0 - = < |- < backspace
+-- | T   q w e r t y u i o p [ ] \ |  T tab
+-- | ^   a s d f g h j k l ; '   > |  ^ caps lock, > enter
+-- | S   z x c v b n m , . / #   S |  S shift, # symbols
+-- |   <   >   [ _ _ _ ]   ^   v   |  left/right, spacebar, and up/down
+
 local keyboard = {
   -- these are possible layouts depending on modifier keys being pressed
   lowercase = {        -- neither key pressed
@@ -88,6 +94,7 @@ function keyboard:drawKeyboard(monitor)
   end
 
   monitor.setTextColor(colors.white)
+  -- TODO indicate when capslock and shift are pressed by inverting their colors
   monitor.setCursorPos(1, 8)  -- capslock
   monitor.write("^")
   monitor.setCursorPos(1, 9)  -- left shift
@@ -98,11 +105,7 @@ function keyboard:drawKeyboard(monitor)
   monitor.write(">")
   monitor.setCursorPos(15, 9) -- right shift
   monitor.write("S")
-  -- | `   1 2 3 4 5 6 7 8 9 0 - = < |- < backspace
-  -- | T   q w e r t y u i o p [ ] \ |  T tab
-  -- | ^   a s d f g h j k l ; '   > |  ^ caps lock, > enter
-  -- | S   z x c v b n m , . / #   S |  S shift, # symbols
-  -- |   <   >   [ _ _ _ ]   ^   v   |  left/right, spacebar, and up/down
+
   if self.scrollKeys then
     monitor.setBackgroundColor(colors.lightGray)
     monitor.setTextColor(colors.black)
@@ -145,13 +148,16 @@ function keyboard:touch(monitor, x, y)
     end
   end
 
-  -- taken out of else, because scrollKeys does weird
   local c = self:getActive()[y - 5]
   if c then
     c = c:sub(x, x)
     if not (c == " ") then
       self.input = self.input .. c
       self:drawInput(monitor)
+      if self.shift then
+        self.shift = false
+        self:drawKeyboard(monitor)
+      end
     end
   end
 end

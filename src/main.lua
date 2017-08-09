@@ -1,10 +1,10 @@
 local consoles = {}
 
 local selector = dofile("src/selector.lua")
-selector.set_consoles(consoles) -- console selector needs to have access to consoles
+selector.init(consoles) -- console selector needs to have access to consoles
 
 local function new_console(side)
-  consoles[side] = selector.select_console(peripheral.wrap(side))
+  consoles[side] = selector.console(peripheral.wrap(side))
 end
 
 for _, side in ipairs(peripheral.getNames()) do

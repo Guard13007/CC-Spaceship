@@ -41,6 +41,6 @@ local function set_consoles(c)
 end
 
 return {
-  set_consoles = set_consoles,
-  select_console = select_console
+  init = set_consoles,
+  console = select_console
 }
