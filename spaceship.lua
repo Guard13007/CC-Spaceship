@@ -198,8 +198,10 @@ function consoles.lib_access.touch(side, x, y)
     local c = consoles.lib_access.keyboard[consoles.lib_access.getKeyboardName()][y - 5]
     if c then
       c = c:sub(x, x)
-      consoles.lib_access.input = consoles.lib_access.input .. c
-      consoles.lib_access.drawInput()
+      if not c == " " then
+        consoles.lib_access.input = consoles.lib_access.input .. c
+        consoles.lib_access.drawInput()
+      end
     end
   end
 end
