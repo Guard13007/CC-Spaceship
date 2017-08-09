@@ -11,11 +11,34 @@ local consoles = {
     -- entry = {},
     input = "",
     keyboard = {
-      "` 1234567890-=",
-      "T qwertyuiop[]\\",
-      "  asdfghjkl;' ",
-      "  zxcvbnm,./# ",
-      "     [___]"
+      lowercase = {
+        "` 1234567890-=",
+        "T qwertyuiop[]\\",
+        "  asdfghjkl;' ",
+        "  zxcvbnm,./# ",
+        "     [___]"
+      },
+      shift = {
+        "~ !@#$%^&*()_+",
+        "T QWERTYUIOP{}|",
+        "  ASDFGHJKL:\" ",
+        "  ZXCVBNM<>?# ",
+        "     [___]"
+      },
+      capslock = {
+        "` 1234567890-=",
+        "T QWERTYUIOP[]\\",
+        "  ASDFGHJKL;' ",
+        "  ZXCVBNM,./# ",
+        "     [___]"
+      },
+      shiftcaps = {
+        "~ !@#$%^&*()_+",
+        "T qwertyuiop{}|",
+        "  asdfghjkl:\" ",
+        "  zxcvbnm<>?# ",
+        "     [___]"
+      }
     }
   }
 }
@@ -76,9 +99,9 @@ function consoles.lib_access.new(monitor)
 
   monitor.setBackgroundColor(colors.gray)
   monitor.setTextColor(colors.lightGray)
-  for i = 1, #consoles.lib_access.keyboard do
+  for i = 1, #consoles.lib_access.keyboard.lowercase do
     monitor.setCursorPos(1, i + 5)
-    monitor.write(consoles.lib_access.keyboard[i])
+    monitor.write(consoles.lib_access.keyboard.lowercase[i])
   end
   monitor.setTextColor(colors.white)
   monitor.setCursorPos(1, 8)
