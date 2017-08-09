@@ -1,10 +1,9 @@
 os.loadAPI("src/apis/consoles")
 
-local selector = dofile("src/selector.lua")
-selector.init(consoles) -- console selector needs to have access to consoles
+local select_console = dofile("src/select_console.lua")
 
 local function new_console(side)
-  consoles[side] = selector.console(peripheral.wrap(side))
+  consoles[side] = select_console(peripheral.wrap(side))
 end
 
 -- restore previous arrangement

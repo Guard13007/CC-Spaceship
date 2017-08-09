@@ -1,7 +1,5 @@
 local console = dofile("src/util/console.lua")
 
-local consoles -- set by function call when loaded from src/main.lua
-
 local select_console = {
   names = fs.list("src/consoles")
 }
@@ -36,11 +34,4 @@ end
 
 setmetatable(select_console, {__call = select_console.new})
 
-local function set_consoles(c)
-  consoles = c
-end
-
-return {
-  init = set_consoles,
-  console = select_console
-}
+return select_console
