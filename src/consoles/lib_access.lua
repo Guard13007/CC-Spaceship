@@ -7,6 +7,7 @@ local lib_access = {
 
 function lib_access:new(monitor)
   self = {
+    type = "lib_access",
     entry = false,
     keyboard = keyboard({input_x = 2, input_y = 2, displayLength = 13, scrollKeys = true})
   }

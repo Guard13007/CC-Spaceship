@@ -39,7 +39,7 @@ local keyboard = {
 function keyboard:new(opts)
   self = {
     input_x = 1,             -- location of input line
-    input_y = 1,
+    input_y = 2,                -- changed default to 2 because we will always have a title line
     displayLength = 15,      -- displayed length of input line
     empty_bg = colors.black, -- color of empty area of input line
     text_bg = colors.gray,   -- text coloring
@@ -99,13 +99,9 @@ function keyboard:drawKeyboard(monitor)
   monitor.setCursorPos(15, 8) -- enter
   monitor.write(">")
 
-  -- TODO indicate when capslock and shift are pressed by inverting their colors
   if self.caps then
     monitor.setBackgroundColor(colors.white)
     monitor.setTextColor(colors.gray)
-  -- else
-  --   monitor.setBackgroundColor(colors.gray)
-  --   monitor.setTextColor(colors.white)
   end
   monitor.setCursorPos(1, 8)  -- capslock
   monitor.write("^")
