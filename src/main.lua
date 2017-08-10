@@ -1,5 +1,9 @@
 os.loadAPI("src/apis/consoles")
 
+settings.set("com.guard13007.cc-starship.shell.path", shell.path())
+settings.set("com.guard13007.cc-starship.shell.alias", shell.aliases())
+-- settings.set("com.guard13007.cc-starship.help.path", help.path())
+
 local select_console = dofile("src/select_console.lua")
 
 local function new_console(side)
@@ -11,8 +15,8 @@ if fs.exists(".consoles") then
   local file = fs.open(".consoles", "r")
   local restore = textutils.unserialize(file.readAll())
   file.close()
-  for side, name in pairs(restore) do
-    consoles[side] = dofile("src/consoles/" .. name .. ".lua")(peripheral.wrap(side))
+  for side, type in pairs(restore) do
+    consoles[side] = dofile("src/consoles/" .. type .. ".lua")(peripheral.wrap(side))
   end
 end
 
@@ -42,7 +46,3 @@ while true do
     print(event, side, x, y)
   end
 end
-
---[[
-- make it possible to load a file specifying which monitors were using which screens and automatically restore previous "session"
-]]

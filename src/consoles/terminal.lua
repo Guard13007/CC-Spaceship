@@ -1,6 +1,7 @@
 local console = dofile("src/util/console.lua")
 local String = dofile("src/util/String.lua")
 local keyboard = dofile("src/interface/keyboard.lua")
+local shell = dofile("src/env/shell.lua")
 
 local terminal = {}
 
@@ -35,9 +36,22 @@ function terminal:touch(side, x, y)
     local command = String.split(self.keyboard.input)
     self.keyboard.input = ""
 
+    local path = shell.resolveProgram(command[1])
     term.redirect(self.window)
-    pcall(os.run({}, unpack(command)))
+    if path then
+      table.remove(command, 1)
+      pcall(os.run({shell = shell}, path, unpack(command)))
+    else
+      pcall(os.run({}, "rom/programs/shell", unpack(command)))
+    end
     term.redirect(term.native())
+
+    -- term.redirect(self.window)
+    -- pcall(os.run({shell = shell}, unpack(command)))
+    -- -- pcall(os.run({}, unpack(command))) -- NOTE if I develop my own shell, this can be used to improve things here
+    -- -- pcall(os.run({}, "rom/programs/shell", unpack(command)))
+    -- term.redirect(term.native())
+
   -- NOTE could use left and right to access multiple terminals...
   -- elseif event == "left" then
   --   if self.entry and self.entry.index > 1 then
