@@ -43,6 +43,9 @@ while true do
       new_console(side)
     end
   else
+    -- stop cross-writing from terminal and here
+    local previous = term.redirect(term.native())
     print(event, side, x, y)
+    term.redirect(previous)
   end
 end

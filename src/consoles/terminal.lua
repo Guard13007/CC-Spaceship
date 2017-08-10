@@ -8,14 +8,20 @@ local terminal = {}
 function terminal:new(monitor)
   self = {
     type = "terminal",
-    keyboard = keyboard({input_y = 5, text_bg = colors.black, scrollKeys = true}),
-    window = window.create(monitor, 1, 2, 15, 4, true)
+    keyboard = {},
+    window = {},
+    index = 1
   }
   setmetatable(self, {__index = terminal})
 
-  console.start(monitor, "TERMINAL")
+  for i = 1, 9 do
+    self.keyboard[i] = keyboard({input_y = 5, text_bg = colors.black, scrollKeys = true})
+    self.window[i] = window.create(monitor, 1, 2, 15, 4, true)
+  end
 
-  self.keyboard:drawKeyboard(monitor)
+  console.start(monitor, "TERMINAL    1")
+
+  self.keyboard[self.index]:drawKeyboard(monitor)
 
   return self
 end
@@ -28,16 +34,29 @@ function terminal:clear(monitor)
   end
 end
 
+function terminal:switchTerm(monitor, id)
+  self.index = id
+  monitor.setBackgroundColor(colors.black)
+  monitor.setTextColor(colors.cyan)
+  monitor.setCursorPos(15, 1)
+  monitor.write(self.index)
+
+  self.window[self.index].redraw()
+  self.keyboard[self.index]:drawKeyboard(monitor)
+  self.keyboard[self.index]:drawInput(monitor)
+end
+
 function terminal:touch(side, x, y)
   local monitor = peripheral.wrap(side)
-  local event = self.keyboard:touch(monitor, x, y)
+  local event = self.keyboard[self.index]:touch(monitor, x, y)
 
   if event == "enter" then
-    local command = String.split(self.keyboard.input)
-    self.keyboard.input = ""
+    local command = String.split(self.keyboard[self.index].input)
+    self.keyboard[self.index].input = ""
+    self.keyboard[self.index]:drawInput(monitor)
 
     local path = shell.resolveProgram(command[1])
-    term.redirect(self.window)
+    term.redirect(self.window[self.index])
     if path then
       table.remove(command, 1)
       pcall(os.run({shell = shell}, path, unpack(command)))
@@ -46,39 +65,14 @@ function terminal:touch(side, x, y)
     end
     term.redirect(term.native())
 
-    -- term.redirect(self.window)
-    -- pcall(os.run({shell = shell}, unpack(command)))
-    -- -- pcall(os.run({}, unpack(command))) -- NOTE if I develop my own shell, this can be used to improve things here
-    -- -- pcall(os.run({}, "rom/programs/shell", unpack(command)))
-    -- term.redirect(term.native())
-
-  -- NOTE could use left and right to access multiple terminals...
-  -- elseif event == "left" then
-  --   if self.entry and self.entry.index > 1 then
-  --     self:loadEntry(self.entry.index - 1)
-  --     self:drawResult(monitor)
-  --   end
-  -- elseif event == "right" then
-  --   if self.entry and self.entry.index < #terminal.library then
-  --     self:loadEntry(self.entry.index + 1)
-  --     self:drawResult(monitor)
-  --   end
-  -- NOTE would be nice to have command result history...
-  elseif event == "up" then
-    -- if self.entry and self.entry.lineNumber > 1 then
-    --   self.entry.lineNumber = self.entry.lineNumber - 1
-    --   self:drawResult(monitor)
-    -- end
-  elseif event == "down" then
-    -- if self.entry and self.entry.lineNumber < (#self.entry.lines - 2) then
-    --   self.entry.lineNumber = self.entry.lineNumber + 1
-    --   self:drawResult(monitor)
-    -- end
-  else
-    -- if self.entry then
-    --   self.entry = false
-    --   self:clear(monitor)
-    -- end
+  elseif event == "left" then
+    if self.index > 1 then
+      self:switchTerm(monitor, self.index - 1)
+    end
+  elseif event == "right" then
+    if self.index < 9 then
+      self:switchTerm(monitor, self.index + 1)
+    end
   end
 end
 
