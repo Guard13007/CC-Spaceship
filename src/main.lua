@@ -1,4 +1,6 @@
 os.loadAPI("src/apis/consoles")
+os.loadAPI("src/apis/ship")
+
 redstone.setOutput("back", true)
 
 settings.set("com.guard13007.cc-starship.shell.path", shell.path()..":/src/bin")

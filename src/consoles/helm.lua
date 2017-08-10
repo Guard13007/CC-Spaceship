@@ -28,10 +28,32 @@ function helm:new(monitor)
 
   console.start(monitor, "HELM")
 
+  monitor.setBackgroundColor(colors.black)
+  monitor.setTextColor(colors.cyan)
+  monitor.setCursorPos(9, 1)
+  monitor.write("HDG")
+  monitor.setCursorPos(9, 2)
+  monitor.write("SPD")
+  self:updateDraw(monitor)
+
   self.keypad:drawInput(monitor)
   self.keypad:drawPad(monitor)
 
   return self
+end
+
+function helm:updateDraw(monitor)
+  monitor.setBackgroundColor(colors.black)
+  monitor.setTextColor(colors.white)
+  monitor.setCursorPos(13, 1)
+  monitor.write(ship.heading)
+  monitor.setCursorPos(13, 2)
+
+  monitor.write("a00") -- TODO fix based on ship.speed
+  -- ship.speed = {
+  --   type = "i",
+  --   value = 0
+  -- }
 end
 
 function helm:touch(side, x, y)
@@ -56,19 +78,18 @@ return helm
 --[[
 TODO needs weapons firing capability as well!
 
-15x10
 + - - - - - - - + - - - - - - - +
 | =   H E L M     H D G   3 6 0 |  0 to 360 degrees
 |                 S P D   i 5 0 |  i/w for impulse/warp (i green, w orange)
 |                               |  digits are % of impulse or warp #
 |                               |  (ex 3 2 is warp 3.2)
 |                               |-
-|           *           _ _ _ _ |-  blank entries on keypad are dark gray
-|                         1 2 3 |  entry keypad, select (numbers are light gray)
-|                       H 4 5 6 |  heading (lightBlue)
-| 2 x                   I 7 8 9 |  impulse (green)
-| + -                   W . 0 + |  or warp (orange)
-+ - - - - - - - - - - - - - - - +  then type value and enter (+ green) (. is cancel, red)
+|           *           _ _ _ _ |-
+|                         1 2 3 |
+|                       H 4 5 6 |
+| 2 x                   I 7 8 9 |
+| + -                   W . 0 + |
++ - - - - - - - - - - - - - - - +
 
 * in center is our ship,
 bg color represents movement capability (when there is bg color, fg is dark gray)
@@ -79,5 +100,5 @@ bg color represents movement capability (when there is bg color, fg is dark gray
 + - in bottom left are zoom controls, (in light gray)
 right above it is current zoom (from 1x to 9x) (1-3 in white, 4-6 in light gray, 7-9 are red)
 = in top left allows selecting a different console (is blue-colored)
- HELM text is cyan color, as are HDG and SPD
+ HELM text is cyan color, as are HDG and SPD (but their values are white)
 ]]

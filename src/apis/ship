@@ -1,0 +1,7 @@
+heading = 360
+position = vector:new()
+velocity = vector:new()
+speed = {
+  type = "i",
+  value = 0
+}
