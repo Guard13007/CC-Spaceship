@@ -3,11 +3,12 @@ local String = dofile("src/util/String.lua")
 local keyboard = dofile("src/interface/keyboard.lua")
 local shell = dofile("src/env/shell.lua")
 
-local terminal = {}
+local terminal = {
+  type = "terminal"
+}
 
 function terminal:new(monitor)
   self = {
-    type = "terminal",
     keyboard = {},
     window = {},
     index = 1
@@ -24,14 +25,6 @@ function terminal:new(monitor)
   self.keyboard[self.index]:drawKeyboard(monitor)
 
   return self
-end
-
-function terminal:clear(monitor)
-  monitor.setBackgroundColor(colors.black)
-  for i = 2, 5 do
-    monitor.setCursorPos(1, i)
-    monitor.write("               ")
-  end
 end
 
 function terminal:switchTerm(monitor, id)

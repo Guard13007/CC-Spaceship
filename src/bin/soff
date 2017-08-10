@@ -1,0 +1,2 @@
+shell.run("moff")
+os.queueEvent("terminate")

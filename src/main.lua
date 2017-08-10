@@ -1,6 +1,7 @@
 os.loadAPI("src/apis/consoles")
+redstone.setOutput("back", true)
 
-settings.set("com.guard13007.cc-starship.shell.path", shell.path())
+settings.set("com.guard13007.cc-starship.shell.path", shell.path()..":/src/bin")
 settings.set("com.guard13007.cc-starship.shell.alias", shell.aliases())
 -- settings.set("com.guard13007.cc-starship.help.path", help.path())
 
@@ -27,7 +28,7 @@ for _, side in ipairs(peripheral.getNames()) do
 end
 
 while true do
-  local event, side, x, y = os.pullEvent()
+  local event, side, x, y = os.pullEventRaw()
 
   if event == "monitor_touch" then
     if consoles[side] then
@@ -42,6 +43,10 @@ while true do
     if peripheral.getType(side) == "monitor" then
       new_console(side)
     end
+  elseif event == "terminate" then
+    redstone.setOutput("back", false)
+    os.queueEvent("terminate")
+    os.pullEvent() -- lazy way to exit
   else
     -- stop cross-writing from terminal and here
     local previous = term.redirect(term.native())

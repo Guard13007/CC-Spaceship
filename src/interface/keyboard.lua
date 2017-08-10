@@ -33,27 +33,21 @@ local keyboard = {
     "  asdfghjkl:\"  ",
     "  zxcvbnm<>?#  ",
     "     [___]     "
-  }
+  },
+  input_x = 1,             -- location of input line
+  input_y = 2,                -- changed default to 2 because we will always have a title line
+  displayLength = 15,      -- displayed length of input line
+  empty_bg = colors.black, -- color of empty area of input line
+  text_bg = colors.gray,   -- text coloring
+  text_fg = colors.white,
+  input = "",              -- actual input
+  caps = false,            -- modifier key states
+  shift = false,
+  scrollKeys = false       -- left/right/up/down keys near spacebar?
 }
 
 function keyboard:new(opts)
-  self = {
-    input_x = 1,             -- location of input line
-    input_y = 2,                -- changed default to 2 because we will always have a title line
-    displayLength = 15,      -- displayed length of input line
-    empty_bg = colors.black, -- color of empty area of input line
-    text_bg = colors.gray,   -- text coloring
-    text_fg = colors.white,
-    input = "",              -- actual input
-    caps = false,            -- modifier key states
-    shift = false,
-    scrollKeys = false       -- left/right/up/down keys near spacebar?
-  }
-  setmetatable(self, {__index = keyboard})
-
-  for k,v in pairs(opts) do
-    self[k] = v
-  end
+  self = setmetatable(opts or {}, {__index = keyboard})
 
   return self
 end

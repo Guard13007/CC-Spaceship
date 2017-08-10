@@ -1,0 +1,21 @@
+local tab = {} -- side=type
+
+for side, obj in pairs(consoles) do
+  if obj.type then
+    tab[side] = obj.type
+  end
+
+  local m = peripheral.wrap(side)
+  m.setBackgroundColor(colors.black)
+  m.clear()
+end
+
+local side = next(consoles)
+while side do
+  consoles[side] = nil
+  side = next(consoles)
+end
+
+local file = fs.open(".consoles", "w")
+file.write(textutils.serialize(tab))
+file.close()
