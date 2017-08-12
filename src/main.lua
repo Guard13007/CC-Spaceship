@@ -1,12 +1,13 @@
 os.loadAPI("src/apis/consoles")
 os.loadAPI("src/apis/ship")
+os.loadAPI("src/apis/starship")
+
+local select_console = dofile("src/select_console.lua")
 
 redstone.setOutput(settings.get("com.guard13007.cc-starship.redstone_side", "back"), true)
 
 settings.set("com.guard13007.cc-starship.shell.path", shell.path()..":/src/bin")
 settings.set("com.guard13007.cc-starship.shell.alias", shell.aliases())
-
-local select_console = dofile("src/select_console.lua")
 
 local function new_console(side)
   consoles[side] = select_console(peripheral.wrap(side))

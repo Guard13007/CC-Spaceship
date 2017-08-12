@@ -1,7 +1,7 @@
-local console = dofile("src/util/console.lua")
-local String = dofile("src/util/String.lua")
-local keyboard = dofile("src/interface/keyboard.lua")
-local shell = dofile("src/env/shell.lua")
+local console = starship.console
+local String = starship.String
+local keyboard = starship.keyboard
+local shell = starship.shell
 
 local terminal = {
   index = 1,

@@ -1,0 +1,8 @@
+-- interface
+adv_keypad = dofile("src/interface/adv_keypad.lua")
+keyboard = dofile("src/interface/keyboard.lua")
+-- env
+shell = dofile("src/env/shell.lua")
+-- util
+console = dofile("src/util/console.lua")
+String = dofile("src/util/String.lua")

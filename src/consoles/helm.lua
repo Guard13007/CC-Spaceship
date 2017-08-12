@@ -1,5 +1,5 @@
-local console = dofile("src/util/console.lua")
-local keypad = dofile("src/interface/adv_keypad.lua")
+local console = starship.console
+local keypad = starship.adv_keypad
 
 local helm = {
   type = "helm"

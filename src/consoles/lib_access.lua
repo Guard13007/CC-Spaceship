@@ -1,5 +1,5 @@
-local console = dofile("src/util/console.lua")
-local keyboard = dofile("src/interface/keyboard.lua")
+local console = starship.console
+local keyboard = starship.keyboard
 
 local lib_access = {
   library = fs.list("library"),
