@@ -85,11 +85,11 @@ function shell.run(...)
     table.remove(command, 1)
     pcall(os.run(_G, path, unpack(command)))
   else
-    pcall(os.run(_G, unpack(command)))
+    pcall(os.run(_G, unpack(command))) -- will error
   end
 end
 
-function shell.openTab(...) -- nope
+function shell.openTab(...) -- I am not emulating this
   return shell.run(...)
 end
 

@@ -76,6 +76,7 @@ function keypad:drawPad(monitor)
   end
 end
 
+-- returns 'modeswitch', 'cancel', a number, or nil
 function keypad:touch(monitor, x, y)
   x = x - self.x
   y = y - self.y

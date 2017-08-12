@@ -3,12 +3,12 @@ local keyboard = dofile("src/interface/keyboard.lua")
 
 local lib_access = {
   library = fs.list("library"),
+  entry = false,
   type = "lib_access"
 }
 
 function lib_access:new(monitor)
   self = {
-    entry = false,
     keyboard = keyboard({input_x = 2, input_y = 2, displayLength = 13, scrollKeys = true})
   }
   setmetatable(self, {__index = lib_access})
@@ -20,7 +20,7 @@ function lib_access:new(monitor)
   return self
 end
 
-function lib_access:clear(monitor)
+function lib_access:clearEntry(monitor)
   monitor.setBackgroundColor(colors.black)
   for i = 3, 5 do
     monitor.setCursorPos(1, i)
@@ -29,7 +29,7 @@ function lib_access:clear(monitor)
 end
 
 function lib_access:drawEntry(monitor)
-  self:clear(monitor)
+  self:clearEntry(monitor)
 
   -- drawing title using keyboard
   local input = self.keyboard.input
@@ -56,11 +56,10 @@ function lib_access:loadEntry(index)
     index = index
   }
   local file = fs.open("library/" .. self.entry.title, "r")
-  local line = file.readLine()
-  while line do
+  repeat
+    local line = file.readLine()
     table.insert(self.entry.lines, line)
-    line = file.readLine()
-  end
+  until line == nil
   file.close()
 end
 
@@ -115,7 +114,7 @@ function lib_access:touch(side, x, y)
   else
     if self.entry then
       self.entry = false
-      self:clear(monitor)
+      self:clearEntry(monitor)
     end
   end
 end

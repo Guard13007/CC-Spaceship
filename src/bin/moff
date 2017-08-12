@@ -1,21 +1,19 @@
-local tab = {} -- side=type
+local saved_consoles = {} -- side=type
 
-for side, obj in pairs(consoles) do
-  if obj.type then
-    tab[side] = obj.type
+for side, console in pairs(consoles) do
+  if console.type then
+    saved_consoles[side] = console.type
   end
 
-  local m = peripheral.wrap(side)
-  m.setBackgroundColor(colors.black)
-  m.clear()
+  local monitor = peripheral.wrap(side)
+  monitor.setBackgroundColor(colors.black)
+  monitor.clear()
 end
 
-local side = next(consoles)
-while side do
-  consoles[side] = nil
-  side = next(consoles)
-end
+repeat
+  consoles[next(consoles)] = nil
+until next(consoles) == nil
 
 local file = fs.open(".consoles", "w")
-file.write(textutils.serialize(tab))
+file.write(textutils.serialize(saved_consoles))
 file.close()

@@ -4,14 +4,14 @@ local keyboard = dofile("src/interface/keyboard.lua")
 local shell = dofile("src/env/shell.lua")
 
 local terminal = {
+  index = 1,
   type = "terminal"
 }
 
 function terminal:new(monitor)
   self = {
     keyboard = {},
-    window = {},
-    index = 1
+    window = {}
   }
   setmetatable(self, {__index = terminal})
 

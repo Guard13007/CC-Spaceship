@@ -59,6 +59,7 @@ function keypad:drawPad(monitor)
   monitor.write("*")
 end
 
+-- returns number or nil
 function keypad:touch(monitor, x, y)
   x = x - self.x
   y = y - self.y

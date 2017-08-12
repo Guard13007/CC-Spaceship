@@ -122,6 +122,8 @@ function keyboard:drawKeyboard(monitor)
   end
 end
 
+-- returns 'enter', 'left', 'right', 'up', 'down', or nil
+--                  directions only when scrollKeys=true
 function keyboard:touch(monitor, x, y)
   if x == 1 and y == 8 then
     self.caps = not self.caps
