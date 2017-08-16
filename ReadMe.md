@@ -78,6 +78,12 @@ Classes for interfaces used by multiple consoles.
   TODO: Add symbols. (There is a `#` key used to access special symbols that
   does not function yet.)
 
+### ships
+
+Definitions for different ships that can be used in the simulation.
+Currently one default for testing, I'd like to make it configurable based on the
+settings API. And have definitions roughly corresponding to 'real' ships.
+
 ### util
 
 Utility functions.

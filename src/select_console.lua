@@ -1,4 +1,4 @@
-local console = dofile("src/util/console.lua")
+local console = starship.console
 
 local select_console = {
   names = fs.list("src/consoles")
@@ -27,7 +27,7 @@ function select_console:touch(side, x, y)
   if x > 1 and x < 15 then
     local name = self.names[y - 1]
     if name then
-      consoles[side] = dofile("src/consoles/" .. name .. ".lua")(peripheral.wrap(side))
+      consoles[side] = starship.consoles[name](peripheral.wrap(side))
     end
   end
 end

@@ -1,5 +1,4 @@
 os.loadAPI("src/apis/consoles")
-os.loadAPI("src/apis/ship")
 os.loadAPI("src/apis/starship")
 
 local select_console = dofile("src/select_console.lua")
@@ -20,7 +19,7 @@ if fs.exists(".consoles") and not fs.isDir(".consoles") then
   file.close()
   for side, type in pairs(restore) do
     pcall(function()
-      consoles[side] = dofile("src/consoles/" .. type .. ".lua")(peripheral.wrap(side))
+      consoles[side] = starship.consoles[type](peripheral.wrap(side))
     end)
   end
 end

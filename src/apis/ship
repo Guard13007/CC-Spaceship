@@ -1,9 +1,0 @@
-heading = 360
-position = vector:new()
-velocity = vector:new()
-speed = {
-  type = "i",
-  value = 0
-}
-
--- TODO have a way to calculate heading and speed from velocity

@@ -1,5 +1,13 @@
 local console = starship.console
 local keypad = starship.adv_keypad
+local ship
+
+if starship.ships[1] then
+  ship = starship.ships[1]
+else
+  ship = starship.ships.default()
+  starship.ships[1] = ship
+end
 
 local helm = {
   type = "helm"
